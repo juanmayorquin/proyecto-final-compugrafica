@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed, runningSpeed, gravity;
-    [SerializeField] private Transform cam;
+    [SerializeField] private Transform cam, lookAt;
     [SerializeField] private GameObject visual;
     [SerializeField] private CinemachineVirtualCamera firstPersonCam;
     [SerializeField] private CinemachineFreeLook thirdPersonCam;
@@ -17,10 +17,11 @@ public class Player : MonoBehaviour
     float rotationSpeed;
 
     private void Start()
-    {        
+    {
         characterController = GetComponent<CharacterController>();
         animator = visual.GetComponent<Animator>();
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         SwitchThirdPersonCam();
     }
 
@@ -34,16 +35,8 @@ public class Player : MonoBehaviour
         else
         {
             CamSwitcher.SwitchCamera(thirdPersonCam);
-        }
-
-        if(CamSwitcher.activeCamera == firstPersonCam)
-        {
-            MoverFristPerson();
-        }
-        else
-        {
             MoverThirdPerson();
-        }
+        }        
     }
 
     void MoverThirdPerson()
@@ -71,7 +64,7 @@ public class Player : MonoBehaviour
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSpeed, 0.1f);
 
-            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             if (movementSpeed == speed)
             {
@@ -100,7 +93,11 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        transform.localEulerAngles = new Vector3(0, cam.localEulerAngles.y, 0);
+        float mouseX = Input.GetAxis("MouseX");
+        float mouseY = Input.GetAxis("MouseY");
+
+        transform.rotation = Quaternion.Euler(0, mouseX * 200 * Time.deltaTime, 0);
+
         Vector3 direccion = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
         characterController.Move(direccion * speed * 0.5f * Time.deltaTime);
     }
@@ -108,6 +105,7 @@ public class Player : MonoBehaviour
     void Aim()
     {
         SwitchFirstPersonCam();
+        MoverFristPerson();
         aiming = true;
     }
 

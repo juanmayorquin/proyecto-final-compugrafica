@@ -2,13 +2,14 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed, runningSpeed, gravity;
-    [SerializeField] private Transform cam, lookAt;
+    [SerializeField] private Transform cam;
     [SerializeField] private GameObject visual;
     [SerializeField] private CinemachineVirtualCamera firstPersonCam;
     [SerializeField] private CinemachineFreeLook thirdPersonCam;
@@ -93,18 +94,27 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        float mouseX = Input.GetAxis("MouseX");
-        float mouseY = Input.GetAxis("MouseY");
-
-        transform.rotation = Quaternion.Euler(0, mouseX * 200 * Time.deltaTime, 0);
-
+        transform.rotation = Quaternion.Euler(0, firstPersonCam.transform.eulerAngles.y, 0f);
         Vector3 direccion = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
-        characterController.Move(direccion * speed * 0.5f * Time.deltaTime);
+
+        if(direccion.magnitude > 0)
+        {
+            animator.SetBool("walk", true);
+            animator.SetBool("run", false);
+        }
+        else
+        {
+            animator.SetBool("walk", false);
+            animator.SetBool("run", false);
+        }
+
+        characterController.Move(direccion * speed * 0.2f * Time.deltaTime);
     }
 
     void Aim()
     {
         SwitchFirstPersonCam();
+        cam.transform.rotation = Quaternion.Euler(0f, gameObject.transform.rotation.y, 0f);
         MoverFristPerson();
         aiming = true;
     }

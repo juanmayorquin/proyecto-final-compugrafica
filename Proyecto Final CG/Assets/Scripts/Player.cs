@@ -120,16 +120,9 @@ public class Player : MonoBehaviour
     {
         SwitchFirstPersonCam();
         MoverFristPerson();
-        foreach(Item item in inventory)
+        foreach (Item item in inventory)
         {
-            if (!item.selected)
-            {
-                item.gameObject.SetActive(false);
-            }
-            else if (!item.selected)
-            {
-                item.gameObject.SetActive(true);
-            }
+            item.gameObject.SetActive(item.selected);
         }
     }
 

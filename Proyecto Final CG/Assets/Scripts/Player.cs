@@ -3,16 +3,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
-    [SerializeField] private float speed, runningSpeed, gravity;
+    [SerializeField] private float speed, runningSpeed, gravity, life, damage;
     [SerializeField] private Transform cam;
-    [SerializeField] private GameObject visual;
+    [SerializeField] private GameObject visual, flashlight, gun;
     [SerializeField] private CinemachineVirtualCamera firstPersonCam;
     [SerializeField] private CinemachineFreeLook thirdPersonCam;
+    [SerializeField] private List<Item> inventory = new List<Item>();
+
     bool aiming = false;
     Animator animator;
     float rotationSpeed;
@@ -24,10 +27,12 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         SwitchThirdPersonCam();
+        inventory[0].selected = true;
     }
 
     private void Update()
     {
+        
         
         if(Input.GetKey(KeyCode.Mouse1))
         {
@@ -35,7 +40,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            CamSwitcher.SwitchCamera(thirdPersonCam);
+            SwitchThirdPersonCam();
             MoverThirdPerson();
         }        
     }
@@ -94,7 +99,7 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        transform.rotation = Quaternion.Euler(0, firstPersonCam.transform.eulerAngles.y, 0f);
+        transform.eulerAngles = new Vector3(0, firstPersonCam.transform.eulerAngles.y, 0f);
         Vector3 direccion = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
 
         if(direccion.magnitude > 0)
@@ -114,20 +119,49 @@ public class Player : MonoBehaviour
     void Aim()
     {
         SwitchFirstPersonCam();
-        cam.transform.rotation = Quaternion.Euler(0f, gameObject.transform.rotation.y, 0f);
         MoverFristPerson();
-        aiming = true;
+        foreach(Item item in inventory)
+        {
+            if (!item.selected)
+            {
+                item.gameObject.SetActive(false);
+            }
+            else if (!item.selected)
+            {
+                item.gameObject.SetActive(true);
+            }
+        }
     }
 
     void SwitchFirstPersonCam()
     {
         firstPersonCam.Priority = 10;
         thirdPersonCam.Priority = 0;
+
+        cam.transform.rotation = Quaternion.Euler(0f, gameObject.transform.rotation.y, 0f);
     }
 
     void SwitchThirdPersonCam()
     {
         thirdPersonCam.Priority = 10;
         firstPersonCam.Priority = 0;
+
+        gun.SetActive(false);
+        flashlight.SetActive(false);
+    }
+
+    void Die()
+    {
+        SwitchThirdPersonCam();
+        animator.SetBool("walk", false);
+        animator.SetBool("run", false);
+        animator.SetBool("die", true);
+        speed = 0;
+        runningSpeed = 0;
+    }
+
+    void InteractuarConItem(int posicionInventario)
+    {
+        inventory[posicionInventario].Interactuar();
     }
 }

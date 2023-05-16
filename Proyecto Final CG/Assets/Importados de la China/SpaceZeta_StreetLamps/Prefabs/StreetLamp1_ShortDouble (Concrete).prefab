@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6524143754183528074}
   - component: {fileID: 699996685639266931}
   - component: {fileID: 6122479854402490725}
-  - component: {fileID: 5492340806887486650}
   - component: {fileID: 8563219354418304448}
+  - component: {fileID: 8482690492716418913}
   m_Layer: 0
   m_Name: StreetLamp1_ShortDouble (Concrete)
   m_TagString: Untagged
@@ -104,27 +104,6 @@ CapsuleCollider:
   m_Height: 3.5648677
   m_Direction: 1
   m_Center: {x: 0.00000014901161, y: 1.7824339, z: 0.0010155514}
---- !u!95 &5492340806887486650
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263881239168321199}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c50914fd71d6e0e4a815ea5b3212862b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8563219354418304448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +118,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modoluminoso: 0
   fosforico: {fileID: 1263881239168321199}
+--- !u!111 &8482690492716418913
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263881239168321199}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 2df3c2cf185914042bb9e57be5a38578, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c6be06dce93875b4ba4ef80d12e66244, type: 2}
+  - {fileID: 7400000, guid: a4b66eb3687a1174b9bf10f556759569, type: 2}
+  - {fileID: 7400000, guid: 2df3c2cf185914042bb9e57be5a38578, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4343313168712808354
 GameObject:
   m_ObjectHideFlags: 0

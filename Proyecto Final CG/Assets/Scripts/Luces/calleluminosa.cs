@@ -5,7 +5,7 @@ using UnityEngine;
 public class calleluminosa : MonoBehaviour
 {
   public int modoluminoso;
-	public GameObject fosforico;
+  public GameObject fosforico;
 
 
 	void Update () {

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera firstPersonCam;
     [SerializeField] private CinemachineFreeLook thirdPersonCam;
     [SerializeField] private List<Item> inventory = new List<Item>();
+    [SerializeField] private Item itemSeleccionado;
 
     bool aiming = false;
     Animator animator;
@@ -27,13 +28,21 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         SwitchThirdPersonCam();
+
         inventory[0].selected = true;
+
     }
 
     private void Update()
-    {
-        
-        
+    {       
+        foreach(Item item in inventory)
+        {
+            if(item.selected)
+            {
+                itemSeleccionado = item;
+            }
+        }
+
         if(Input.GetKey(KeyCode.Mouse1))
         {
             Aim();
@@ -42,7 +51,18 @@ public class Player : MonoBehaviour
         {
             SwitchThirdPersonCam();
             MoverThirdPerson();
-        }        
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            inventory[0].selected = true;
+            inventory[1].selected = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            inventory[0].selected = false;
+            inventory[1].selected = true;
+        }
     }
 
     void MoverThirdPerson()
@@ -124,6 +144,11 @@ public class Player : MonoBehaviour
         {
             item.gameObject.SetActive(item.selected);
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            InteractuarConItem(itemSeleccionado);
+        }
     }
 
     void SwitchFirstPersonCam()
@@ -153,8 +178,8 @@ public class Player : MonoBehaviour
         runningSpeed = 0;
     }
 
-    void InteractuarConItem(int posicionInventario)
+    void InteractuarConItem(Item itemAUtilizar)
     {
-        inventory[posicionInventario].Interactuar();
+        itemAUtilizar.Interactuar();
     }
 }

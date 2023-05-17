@@ -563,7 +563,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500561873}
-  m_LocalRotation: {x: 0.0477329, y: 0.00000001718677, z: -8.213107e-10, w: 0.9988601}
+  m_LocalRotation: {x: 0.047732905, y: -0.00000001718677, z: 8.213107e-10, w: 0.9988601}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1221,7 +1221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108269434}
-  m_LocalRotation: {x: 0.029604271, y: -0.0000000010749273, z: 3.183639e-11, w: 0.9995617}
+  m_LocalRotation: {x: 0.029604271, y: 0.0000000010749275, z: -3.1836398e-11, w: 0.9995617}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1271,6 +1271,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 788267e74b26df7408c35e159e98bcb9, type: 3}
   m_PrefabInstance: {fileID: 1708624531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1276850067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276850065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d502f77e07237e4e97da10ec131f705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: gun
+  selected: 0
 --- !u!1001 &1374302576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1418,12 +1432,17 @@ MonoBehaviour:
   speed: 10
   runningSpeed: 14
   gravity: 9.81
+  life: 0
+  damage: 0
   cam: {fileID: 963194228}
   visual: {fileID: 117393664}
   flashlight: {fileID: 1940489167}
   gun: {fileID: 1276850065}
   firstPersonCam: {fileID: 334914596}
   thirdPersonCam: {fileID: 1743501635}
+  inventory:
+  - {fileID: 1940489172}
+  - {fileID: 1276850067}
 --- !u!1001 &1708624531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1735,6 +1754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d502f77e07237e4e97da10ec131f705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombre: linterna
+  selected: 0
 --- !u!1 &2015100530
 GameObject:
   m_ObjectHideFlags: 3

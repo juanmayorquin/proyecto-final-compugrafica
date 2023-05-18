@@ -9,6 +9,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private int ammo;
     [SerializeField] private float speed, runningSpeed, gravity, life, damage;
     [SerializeField] private Transform cam;
     [SerializeField] private GameObject visual, flashlight, gun;
@@ -180,6 +181,6 @@ public class Player : MonoBehaviour
 
     void InteractuarConItem(Item itemAUtilizar)
     {
-        itemAUtilizar.Interactuar();
+        itemAUtilizar.Interactuar(ammo);
     }
 }

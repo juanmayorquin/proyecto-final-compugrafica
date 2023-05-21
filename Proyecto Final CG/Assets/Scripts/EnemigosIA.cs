@@ -11,6 +11,7 @@ public class EnemigosIA : MonoBehaviour
     private float timer;
     [SerializeField] public float timeGuard;
     public Transform[] wayPoint; 
+    private int nextWaypoint;
 
     void Start()
     {
@@ -37,7 +38,21 @@ public class EnemigosIA : MonoBehaviour
 
     void Patrulla()
     {
-        miAgente.SetDestination(wayPoint[0].transform.position);
+        miAgente.SetDestination(wayPoint[nextWaypoint].transform.position);
+        Vector3 difPos = wayPoint[nextWaypoint].transform.position - this.transform.position;
+        if (Mathf.Abs (difPos.x) < 0.1f && Mathf.Abs(difPos.z) < 0.1f)
+        {
+            timer = 0;
+            if(nextWaypoint < wayPoint.Length - 1)
+            {
+                nextWaypoint++;
+            }
+            else if (nextWaypoint == wayPoint.Length - 1)
+            {
+                nextWaypoint = 0;
+            }
+        }
+
     }
 
     void Persecucion()

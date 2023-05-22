@@ -12,6 +12,8 @@ public class EnemigosIA : MonoBehaviour
     [SerializeField] public float timeGuard;
     public Transform[] wayPoint; 
     private int nextWaypoint;
+    private Vector3 distPlayer;
+    private Vector3 playerTrans;
 
     void Start()
     {
@@ -21,6 +23,7 @@ public class EnemigosIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform.position;
         if(timer < timeGuard)
         {
             Guardia();

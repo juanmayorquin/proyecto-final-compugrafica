@@ -24,14 +24,23 @@ public class EnemigosIA : MonoBehaviour
     void Update()
     {
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform.position;
-        if(timer < timeGuard)
+        distPlayer = playerTrans - this.transform.position;
+        if(Mathf.Abs(distPlayer.x) < 10 && Mathf.Abs(distPlayer.z) < 10)
         {
-            Guardia();
+            Persecucion();
         }
-        if (timer >= timeGuard)
+        else
         {
-            Patrulla();
+            if (timer < timeGuard)
+            {
+                Guardia();
+            }
+            if (timer >= timeGuard)
+            {
+                Patrulla();
+            }
         }
+        
     }
 
     void Guardia ()
@@ -60,6 +69,6 @@ public class EnemigosIA : MonoBehaviour
 
     void Persecucion()
     {
-
+        miAgente.SetDestination(playerTrans);
     }
 }

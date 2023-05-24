@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] private GameObject bala;
     [SerializeField] private Transform fire;
     public bool selected;
-    public void Interactuar(int ammo)
+    public void Interactuar()
     {
         switch(nombre)
         {
@@ -17,14 +17,15 @@ public class Item : MonoBehaviour
                 GetComponentInChildren<Light>().enabled = !GetComponentInChildren<Light>().enabled;
                 break;
             case "gun":
-                Disparar(ammo);
+                Disparar();
                 break;
         }
     }
 
-    void Disparar(int ammo)
+    void Disparar()
     {
-        Instantiate(bala, fire.transform.position, Quaternion.Euler(bala.transform.eulerAngles.x, bala.transform.eulerAngles.y - 90, bala.transform.eulerAngles.z));
-        //bala.GetComponent<Rigidbody>().AddForce(bala.transform.right * 10);
+        GameObject balaLanzada = Instantiate(bala, fire.transform.position, Quaternion.Euler(fire.transform.eulerAngles.x, fire.transform.eulerAngles.y - 90, fire.transform.eulerAngles.z));
+        balaLanzada.GetComponent<Rigidbody>().AddForce(fire.forward * 20, ForceMode.Impulse);
+        Destroy(balaLanzada, 2f);
     }
 }

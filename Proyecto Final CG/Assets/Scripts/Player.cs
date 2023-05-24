@@ -11,10 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private int ammo;
     [SerializeField] private float speed, runningSpeed, gravity, life, damage;
-    [SerializeField] private Transform cam;
+    [SerializeField] private Camara cam;
     [SerializeField] private GameObject visual, flashlight, gun;
-    [SerializeField] private CinemachineVirtualCamera firstPersonCam;
-    [SerializeField] private CinemachineFreeLook thirdPersonCam;
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private Item itemSeleccionado;
 
@@ -87,7 +85,7 @@ public class Player : MonoBehaviour
 
         if (direccion.magnitude > 0)
         {
-            float targetAngle = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSpeed, 0.1f);
 
@@ -120,7 +118,7 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        transform.eulerAngles = new Vector3(0, firstPersonCam.transform.eulerAngles.y, 0f);
+        transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0f);
         Vector3 direccion = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
 
         if(direccion.magnitude > 0)
@@ -154,17 +152,13 @@ public class Player : MonoBehaviour
 
     void SwitchFirstPersonCam()
     {
-        firstPersonCam.Priority = 10;
-        thirdPersonCam.Priority = 0;
-
+        cam.SwitchFirstPersonCam();
         cam.transform.rotation = Quaternion.Euler(0f, gameObject.transform.rotation.y, 0f);
     }
 
     void SwitchThirdPersonCam()
     {
-        thirdPersonCam.Priority = 10;
-        firstPersonCam.Priority = 0;
-
+        cam.SwitchThirdPersonCam();
         gun.SetActive(false);
         flashlight.SetActive(false);
     }
@@ -181,6 +175,6 @@ public class Player : MonoBehaviour
 
     void InteractuarConItem(Item itemAUtilizar)
     {
-        itemAUtilizar.Interactuar(ammo);
+        itemAUtilizar.Interactuar();
     }
 }

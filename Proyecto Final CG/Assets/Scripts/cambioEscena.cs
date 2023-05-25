@@ -7,22 +7,10 @@ public class cambioEscena : MonoBehaviour
 {
     public string scene;
 
-    public void OnCollisionEnter(Collision collision)
-    
+    public void cambio()
     {
-
-        if(collision.gameObject.tag == "cambio")
-        {
-
-            Debug.Log("TOCO");
-
-            SceneManager.LoadScene(scene);
-
-        }
-        
+        SceneManager.LoadScene(scene);
+    }
 
             
-
-        
-    }
 }

@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         animator = visual.GetComponent<Animator>();
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
         SwitchThirdPersonCam();
 
@@ -91,6 +90,7 @@ public class Player : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+
             if (movementSpeed == speed)
             {
                 animator.SetBool("walk", true);
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
                 animator.SetBool("run", true);
             }
 
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            //transform.rotation = Quaternion.Euler(0, angle, 0);
             characterController.Move(moveDir.normalized * movementSpeed * Time.deltaTime);
         }
         else
@@ -153,7 +153,6 @@ public class Player : MonoBehaviour
     void SwitchFirstPersonCam()
     {
         cam.SwitchFirstPersonCam();
-        cam.transform.rotation = Quaternion.Euler(0f, gameObject.transform.rotation.y, 0f);
     }
 
     void SwitchThirdPersonCam()

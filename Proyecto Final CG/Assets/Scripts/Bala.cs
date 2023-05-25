@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour
 {
+    [SerializeField] private float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,13 @@ public class Bala : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemigo"))
+        {
+            //Aquí va el código de restar vida al enemigo
+        }
     }
 }

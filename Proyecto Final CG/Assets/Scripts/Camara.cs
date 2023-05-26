@@ -43,8 +43,7 @@ public class Camara : MonoBehaviour
 
         rotaX = Mathf.Clamp(rotaX, -80f, 80f);//Restriccion de rotacion de la camara entre 90 y -90
 
-        transform.localRotation = Quaternion.Euler(rotaX, 0f, 0f);
-
+        transform.localRotation = Quaternion.Euler(rotaX, cuerpoJugador.eulerAngles.y, 0f);
         cuerpoJugador.Rotate(Vector3.up * mouseX);
     }
 

@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0f);
+        //transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0f);
         Vector3 direccion = ((transform.forward * vertical) + (transform.right * horizontal)).normalized;
 
         if(direccion.magnitude > 0)

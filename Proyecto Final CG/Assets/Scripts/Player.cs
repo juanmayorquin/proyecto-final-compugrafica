@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private int ammo;
-    [SerializeField] private float speed, runningSpeed, gravity, life, damage;
+    [SerializeField] private float speed, runningSpeed, gravity, damage;
     [SerializeField] private Camara cam;
     [SerializeField] private GameObject visual, flashlight, gun;
     [SerializeField] private List<Item> inventory = new List<Item>();
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     Animator animator;
     float rotationSpeed;
 
+    public float life;
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -191,16 +192,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Curar(int cant)
+    public void Curar(float cura)
     {
-        if(life + cant > 100)
+        if(life + cura > 100)
         {
             life = 100;
         }
 
         else
         {
-            life += cant;
+            life += cura;
         }
     }
 }

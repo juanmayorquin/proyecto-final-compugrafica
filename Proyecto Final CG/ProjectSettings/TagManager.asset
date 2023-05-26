@@ -6,6 +6,7 @@ TagManager:
   tags:
   - cambio
   - Enemigo
+  - boss
   layers:
   - Default
   - TransparentFX

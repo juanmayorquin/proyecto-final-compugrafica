@@ -103,10 +103,26 @@ public class enemy : MonoBehaviour
         Comportamiento_Enemy();
     }
 
+    void Die()
+    {
+        ani.SetBool("walk", false);
+        ani.SetBool("run", false);
+        ani.SetBool("die", true);
+        Destroy(gameObject,1.5f);
+    }
+
     public void TakeDamage(float damage)
     {
 
-        vida -= damage;
+        if (vida - damage <= 0)
+        {
+            vida = 0;
+            Die();
+        }
+        else
+        {
+            vida -= damage;
+        }
 
     }
 

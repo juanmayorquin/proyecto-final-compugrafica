@@ -11,13 +11,12 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private int ammo;
-    [SerializeField] private float speed, runningSpeed, gravity, damage;
+    [SerializeField] private float speed, runningSpeed, gravity;
     [SerializeField] private Camara cam;
     [SerializeField] private GameObject visual, flashlight, gun;
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private Item itemSeleccionado;
 
-    bool aiming = false;
     Animator animator;
     float rotationSpeed;
 
@@ -198,7 +197,6 @@ public class Player : MonoBehaviour
         {
             life = 100;
         }
-
         else
         {
             life += cura;

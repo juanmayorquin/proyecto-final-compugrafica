@@ -14,7 +14,7 @@ public class ToBoss : MonoBehaviour
         if (other.CompareTag(PlayerTag))
         {
             
-            SceneManager.LoadScene("Cinematica 4"); 
+            SceneManager.LoadScene("Cinematica 2"); 
         }
     }
 }

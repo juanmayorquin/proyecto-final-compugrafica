@@ -11,7 +11,6 @@ using UnityEngine.Video;
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
-    [SerializeField] private int ammo;
     [SerializeField] private float speed, runningSpeed, gravity;
     [SerializeField] private Camara cam;
     [SerializeField] private GameObject visual, flashlight, gun;

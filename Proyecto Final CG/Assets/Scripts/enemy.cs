@@ -10,6 +10,9 @@ public class enemy : MonoBehaviour
     public Quaternion angulo;
     public float grado;
     public bool atak;
+    public Player player;
+    public float damage;
+    public float vida;
 
     public GameObject Target;
     // Start is called before the first frame update
@@ -73,7 +76,6 @@ public class enemy : MonoBehaviour
             }
             else
             {
-                Debug.Log("pegue");
                 ani.SetBool("walk", false);
                 ani.SetBool("run", false);
 
@@ -88,11 +90,25 @@ public class enemy : MonoBehaviour
     {
         ani.SetBool("attack", false);
         atak = false;
-         
+
+    }
+
+    public void pegar()
+    {
+        player.TakeDamage(damage);
     }
     // Update is called once per frame
     void Update()
     {
         Comportamiento_Enemy();
     }
+
+    public void TakeDamage(float damage)
+    {
+
+        vida -= damage;
+
+    }
+
+
 }

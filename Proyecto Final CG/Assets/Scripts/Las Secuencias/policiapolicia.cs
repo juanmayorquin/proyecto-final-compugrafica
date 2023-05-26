@@ -7,12 +7,12 @@ public class policiapolicia : MonoBehaviour
 {
    public void EscenaJuego()
    {
-     SceneManager.LoadScene("CinematicaInicial");
+     SceneManager.LoadScene("CinematicaInicial", LoadSceneMode.Single);
    }
 
    public void PlayAgain()
    {
-     SceneManager.LoadScene("Juego");
+     SceneManager.LoadScene("Juego", LoadSceneMode.Single);
    }
 
 

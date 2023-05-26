@@ -7,6 +7,7 @@ using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -180,6 +181,10 @@ public class Player : MonoBehaviour
         animator.SetBool("die", true);
         speed = 0;
         runningSpeed = 0;
+        Destroy(gameObject,2f);
+        SceneManager.LoadScene("GameOver");
+
+
     }
 
     void InteractuarConItem(Item itemAUtilizar)

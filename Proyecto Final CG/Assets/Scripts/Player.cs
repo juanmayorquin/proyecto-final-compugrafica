@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class Player : MonoBehaviour
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject visual, flashlight, gun;
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private Item itemSeleccionado;
+    [SerializeField] private Image barraDeVida;
 
     Animator animator;
     float rotationSpeed;
@@ -33,7 +35,9 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {
+        barraDeVida.fillAmount = life / 100;
+
         foreach(Item item in inventory)
         {
             if(item.selected)

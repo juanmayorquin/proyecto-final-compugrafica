@@ -22,6 +22,7 @@ public class Bala : MonoBehaviour
         if (collision.collider.CompareTag("Enemigo"))
         {
             collision.gameObject.GetComponent<enemy>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

@@ -108,7 +108,7 @@ public class enemy : MonoBehaviour
         ani.SetBool("walk", false);
         ani.SetBool("run", false);
         ani.SetBool("die", true);
-        Destroy(gameObject,1.5f);
+        Destroy(gameObject,3f);
     }
 
     public void TakeDamage(float damage)

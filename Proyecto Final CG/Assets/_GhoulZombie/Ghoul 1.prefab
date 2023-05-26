@@ -1231,8 +1231,9 @@ GameObject:
   - component: {fileID: 7155416918096850960}
   - component: {fileID: 7119700618643333300}
   - component: {fileID: 7152554725283123572}
-  - component: {fileID: 7152554725283123575}
   - component: {fileID: 7152554725283123574}
+  - component: {fileID: 611579705192836324}
+  - component: {fileID: 6742749398609282709}
   m_Layer: 0
   m_Name: Ghoul 1
   m_TagString: Untagged
@@ -1303,25 +1304,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7152554725283123575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7153506595075916002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4620f1cb6d375fc48b5d4e67babca100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miAgente: {fileID: 7152554725283123574}
-  timeGuard: 3
-  wayPoint:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!195 &7152554725283123574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1344,6 +1326,42 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &611579705192836324
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153506595075916002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.86, z: 0}
+--- !u!114 &6742749398609282709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153506595075916002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5af1210505ea7546831163f5b4a3384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rutina: 0
+  cronometro: 0
+  ani: {fileID: 7152554725283123572}
+  angulo: {x: 0, y: 0, z: 0, w: 0}
+  grado: 0
+  atak: 0
+  player: {fileID: 0}
+  damage: 15
+  vida: 50
+  Target: {fileID: 0}
 --- !u!1 &7153516553158443488
 GameObject:
   m_ObjectHideFlags: 0

@@ -105,8 +105,6 @@ MonoBehaviour:
   speed: 10
   runningSpeed: 14
   gravity: 9.81
-  life: 100
-  damage: 15
   cam: {fileID: 8102980010938351912}
   visual: {fileID: 8985517653394887091}
   flashlight: {fileID: 8102009365208538977}
@@ -115,6 +113,7 @@ MonoBehaviour:
   - {fileID: 8102980009977900937}
   - {fileID: 8102980009659543541}
   itemSeleccionado: {fileID: 0}
+  life: 100
 --- !u!1 &8102980010525678603
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 413006, guid: 3d3a4f5fcb4669e4396a9e4382609315, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.37
+      value: 0.508
       objectReference: {fileID: 0}
     - target: {fileID: 413006, guid: 3d3a4f5fcb4669e4396a9e4382609315, type: 3}
       propertyPath: m_LocalRotation.w

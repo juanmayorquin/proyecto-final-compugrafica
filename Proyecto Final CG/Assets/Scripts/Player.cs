@@ -14,10 +14,11 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed, runningSpeed, gravity;
     [SerializeField] private Camara cam;
-    [SerializeField] private GameObject visual, flashlight, gun;
+    [SerializeField] private GameObject visual, flashlight, gun, nota;
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private Item itemSeleccionado;
     [SerializeField] private Image barraDeVida;
+    [SerializeField] Text textoNota;
 
     Animator animator;
     float rotationSpeed;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     public float life;
     private void Start()
     {
+        nota.SetActive(false);
         characterController = GetComponent<CharacterController>();
         animator = visual.GetComponent<Animator>();
         Cursor.visible = true;
@@ -215,5 +217,16 @@ public class Player : MonoBehaviour
         {
             life += cura;
         }
+    }
+
+    public void MostrarNota(string msj)
+    {
+        nota.SetActive(true);
+        textoNota.text = msj;
+    }
+
+    public void OcultarNota()
+    {
+        nota.SetActive(false);
     }
 }

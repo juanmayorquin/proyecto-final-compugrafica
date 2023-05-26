@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
                 animator.SetBool("run", true);
             }
 
-            //transform.rotation = Quaternion.Euler(0, angle, 0);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
             characterController.Move(moveDir.normalized * movementSpeed * Time.deltaTime);
         }
         else

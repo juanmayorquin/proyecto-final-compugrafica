@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Player : MonoBehaviour
 {
@@ -175,5 +176,31 @@ public class Player : MonoBehaviour
     void InteractuarConItem(Item itemAUtilizar)
     {
         itemAUtilizar.Interactuar();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (life - damage <= 0)
+        {
+            life = 0;
+            Die();
+        }
+        else
+        {
+            life -= damage;
+        }
+    }
+
+    public void Curar(int cant)
+    {
+        if(life + cant > 100)
+        {
+            life = 100;
+        }
+
+        else
+        {
+            life += cant;
+        }
     }
 }

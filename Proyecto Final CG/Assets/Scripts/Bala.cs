@@ -21,7 +21,7 @@ public class Bala : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemigo"))
         {
-            //Aquí va el código de restar vida al enemigo
+            collision.gameObject.GetComponent<enemy>().TakeDamage(damage);
         }
     }
 }

@@ -6,15 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: bbff68c960e5feb428e77023ae12d7f2
+  - enabled: 1
+    path: Assets/Scenes/CinematicaInicial.unity
+    guid: 95df0bea6f5fadf44a2c8d6a36aa087d
+  - enabled: 1
     path: Assets/Scenes/Cinematica 1.unity
     guid: 4fc11bbce1adf594f8e6081d564f5d70
   - enabled: 1
     path: Assets/Scenes/Juego.unity
     guid: d22c920958f1cdb4ab932d86ca50669a
   - enabled: 1
+    path: Assets/Scenes/Cinematica 2.unity
+    guid: 29b9b69f805159f44a30e89c4c79680f
+  - enabled: 1
     path: Assets/Scenes/Boss.unity
     guid: 64a557f9a33a3f246ad61f67f070108e
   - enabled: 1
     path: Assets/Scenes/Cinematica 4.unity
     guid: c9d7333ea10d6164fbb44f898a8df26f
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: bd5ef0267836eed4b81b3a3db708e7cc
   m_configObjects: {}

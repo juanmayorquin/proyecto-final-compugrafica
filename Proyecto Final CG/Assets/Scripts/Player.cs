@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
-using Unity.VisualScripting.ReorderableList;
+//using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -184,14 +184,16 @@ public class Player : MonoBehaviour
         speed = 0;
         runningSpeed = 0;
         Destroy(gameObject,2f);
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        SceneManager.LoadScene("GameOver");
 
 
     }
 
     private void OnDestroy()
     {
-        SceneManager.LoadScene("GameOver");
+
     }
 
     void InteractuarConItem(Item itemAUtilizar)

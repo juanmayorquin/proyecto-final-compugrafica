@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Camara : MonoBehaviour
 {
@@ -24,7 +25,14 @@ public class Camara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        if(SceneManager.GetActiveScene().name.Equals("Menu") || SceneManager.GetActiveScene().name.Equals("GameOver")){
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
     }
 
     // Update is called once per frame
@@ -36,6 +44,7 @@ public class Camara : MonoBehaviour
     public void SwitchFirstPersonCam()
     {
         transform.position = pp.position;
+
         float mouseX = Input.GetAxis("Mouse X") * sensiMouse1 * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensiMouse1 * Time.deltaTime;
 

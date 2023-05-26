@@ -2036,11 +2036,13 @@ MonoBehaviour:
   visual: {fileID: 4245718830105230843}
   flashlight: {fileID: 3902708698789049129}
   gun: {fileID: 3903137730447698132}
+  nota: {fileID: 2007501922104254767}
   inventory:
   - {fileID: 3903137730465596353}
   - {fileID: 3903137730650457021}
   itemSeleccionado: {fileID: 0}
   barraDeVida: {fileID: 5563985060263631772}
+  textoNota: {fileID: 2842382274641938558}
   life: 100
 --- !u!1 &3903137731161512151
 GameObject:

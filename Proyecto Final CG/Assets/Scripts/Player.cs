@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     Animator animator;
     float rotationSpeed;
-
+    bool death;
     public float life;
     private void Start()
     {
@@ -42,25 +42,31 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.Mouse1))
+        if (!death)
         {
-            Aim();
-        }
-        else
-        {
-            SwitchThirdPersonCam();
-            MoverThirdPerson();
-        }
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                Aim();
+            }
+            else
+            {
+                SwitchThirdPersonCam();
+                MoverThirdPerson();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                inventory[0].selected = true;
+                inventory[1].selected = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                inventory[0].selected = false;
+                inventory[1].selected = true;
+            }
+        }else if (death)
         {
-            inventory[0].selected = true;
-            inventory[1].selected = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            inventory[0].selected = false;
-            inventory[1].selected = true;
+            Die();
         }
     }
 
@@ -183,7 +189,7 @@ public class Player : MonoBehaviour
         if (life - damage <= 0)
         {
             life = 0;
-            Die();
+            death = true;
         }
         else
         {

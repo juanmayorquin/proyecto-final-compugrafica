@@ -182,9 +182,14 @@ public class Player : MonoBehaviour
         speed = 0;
         runningSpeed = 0;
         Destroy(gameObject,2f);
+        
+
+
+    }
+
+    private void OnDestroy()
+    {
         SceneManager.LoadScene("GameOver");
-
-
     }
 
     void InteractuarConItem(Item itemAUtilizar)

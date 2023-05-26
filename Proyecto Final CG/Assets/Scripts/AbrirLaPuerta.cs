@@ -22,7 +22,7 @@ public class AbrirLaPuerta : MonoBehaviour
             ActionDisplay.SetActive (true);
 			ActionText.SetActive (true);
 		}
-		if (Input.GetButtonDown("Action")) {
+		if (Input.GetButtonDown("Accion")) {
 			if  (distancia <= 2) 
             
             {

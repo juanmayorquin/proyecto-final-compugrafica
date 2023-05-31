@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
 
     void SwitchFirstPersonCam()
     {
-        transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, 0);
         cam.SwitchFirstPersonCam();
     }
 

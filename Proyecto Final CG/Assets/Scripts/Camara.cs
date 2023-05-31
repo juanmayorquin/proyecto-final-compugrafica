@@ -25,7 +25,7 @@ public class Camara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().name.Equals("Menu") || SceneManager.GetActiveScene().name.Equals("GameOver")){
+        if(!SceneManager.GetActiveScene().name.Equals("Menu") || !SceneManager.GetActiveScene().name.Equals("GameOver")){
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
